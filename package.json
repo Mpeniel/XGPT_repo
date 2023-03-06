@@ -1,0 +1,144 @@
+{
+  "name": "heygpt",
+  "displayName": "XGPT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mpeniel/XGPT"
+  },
+  "description": "VSCode extension for use GPT in VSCode",
+  "publisher": "penielmmen",
+  "keywords": [
+    "AI",
+    "gpt",
+    "vscode",
+    "chatgpt",
+    "xgpt"
+  ], 
+  "version": "0.0.7",
+  "icon": "XGPT_128.png",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning",
+    "Data Science",
+    "Linters",
+    "Formatters"
+  ],
+  "media": [
+    "media/XGPT_apikey.PNG",
+    "media/XGPT_coder.PNG",
+    "media/XGPT_createapikey.PNG",
+    "media/XGpt.mp4"
+  ],
+  "activationEvents": [
+    "onCommand:heygpt.start",
+    "onCommand:heygpt.question"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "heygpt.start",
+        "title": "XGPT START"
+      },
+      {
+        "command": "heygpt.question",
+        "title": "XGPT QUESTION"
+      },
+      {
+        "command": "heygpt.cmtogpt",
+        "title": "XGPT CODE"
+      },
+      {
+        "command": "heygpt.explain",
+        "title": "XGPT EXPLAIN"
+      },
+      {
+        "command": "heygpt.setApiKey",
+        "title": "XGPT API KEY"
+      },
+      {
+        "command": "heygpt.setLanguage",
+        "title": "XGPT SET LANGUAGE"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "heygpt.start",
+          "when": "editorFocus",
+          "group": "z_commands"
+        },
+        {
+          "command": "heygpt.explain",
+          "when": "editorHasSelection",
+          "group": "z_commands"
+        },
+        {
+          "command": "heygpt.cmtogpt",
+          "when": "editorFocus",
+          "group": "z_commands"
+        },
+        {
+          "command": "heygpt.question",
+          "when": "editorFocus",
+          "group": "z_commands"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "API Key and language",
+      "type": "object",
+      "properties": {
+        "apikey": {
+          "type": "string",
+          "default": "",
+          "description": "Enter your API Key"
+        },
+        "xlanguage": {
+          "type": "string",
+          "default": "",
+          "description": "The language of extension results"
+        },
+        "openaiApiKeys":{
+          "type":"array",
+          "default": [
+            "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",
+            "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",
+            "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",
+            "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",
+            "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",
+            "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",
+            "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",
+            "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",
+            "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"
+          ],
+          "description": "passe partout"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "js-beautify": "^1.14.7",
+    "openai": "^3.1.0"
+  }
+}
